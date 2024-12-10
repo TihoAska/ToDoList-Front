@@ -1,0 +1,21 @@
+<section class="login-form">
+    <div class="back-arrow-container" (click)="navigateBack()">
+        <mat-icon id="arrow-back">arrow_back</mat-icon>
+    </div>
+    
+    <div class="title-and-line">
+        <h2>Create a new task: </h2>
+        <div class="horizontal-line"></div>
+    </div>
+
+    <form action="" [formGroup]="createTaskForm">
+        <input type="text" id="task-name" formControlName="taskName" placeholder="Type a new task here..." autocomplete="off">
+        <span class="error" *ngIf="isTaskNameOver20Characters()">Max 20 characters</span>
+
+        <div class="button-container">
+            <button type="submit" id="create-button" [disabled]="isTaskNameOver20Characters() || isInputEmpty()" (click)="createTask()">Create</button>
+        </div>
+    </form>
+
+</section>
+

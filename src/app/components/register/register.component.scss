@@ -1,0 +1,118 @@
+.login-form{
+    min-height: 500px;
+    width: 500px;
+    background-color: #1F2528;
+    border-radius: 20px;
+    gap: 20px;
+    box-sizing: border-box;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    .back-arrow-container{
+        position: absolute;
+        top: 60px;
+        left: 60px;
+        height: 45px;
+        width: 45px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        transition: background-color 0.3s ease;
+
+        #arrow-back{
+            color: white;
+            font-size: 26px;
+        }
+    }
+
+    .back-arrow-container:hover{
+        background-color: #31383c;
+        cursor: pointer;
+    }
+
+    h2{
+        color: white;
+        font-size: 32px;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+
+        color: white;
+        font-size: 20px;
+
+        .user-name-container{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .email-container{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .password-container{
+            display: flex;
+            flex-direction: column;   
+        }
+
+        .error{
+            padding-top: 5px;
+            font-size: 16px;
+            height: 10px;
+            color: lightcoral;
+        }
+
+        input{
+            height: 30px;
+            width: 350px;
+        }
+
+        button{
+            height: 36px;
+            width: 358px;
+            border: none;
+            background-color: white;
+        }
+
+        button:hover{
+            cursor: pointer;
+            background-color: lightgray;
+        }
+    }
+
+    .horizontal-line{
+        height: 1px;
+        width: 308px;
+        background-color: white;
+    }
+
+    button{
+        height: 36px;
+        width: 308px;
+        border: none;
+        background-color: white;
+    } 
+
+    button:hover{
+        cursor: pointer;
+        background-color: lightgray;
+    }
+
+    a{
+        color: white;
+        font-size: 16px;
+    };
+}

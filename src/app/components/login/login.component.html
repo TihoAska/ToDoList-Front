@@ -1,0 +1,28 @@
+<section class="login-form">
+    <h2>Log in</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="login()" #ngForm="ngForm">
+        <div class="username-container">
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username" autocomplete="off" formControlName="username">
+        </div>
+
+        <div class="password-container">
+            <label for="password">Password: </label>
+            <input type="password" id="password" name="password" autocomplete="off" formControlName="password">
+            <span class="error" *ngIf="showError">
+                Email or password is incorrect
+            </span>
+        </div>
+
+        <button type="submit">Log in</button>
+    </form>
+
+    <div class="horizontal-line"></div>
+
+    <div class="buttons">
+        <button id="register-button" (click)="navigateToRegister()">Register</button>
+    </div>
+
+    <a routerLink="/forgot-password">Forgot password?</a>
+</section>

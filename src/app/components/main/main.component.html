@@ -1,0 +1,16 @@
+<div class="container">
+    <main>
+        <header>
+            <div class="title">
+                <h1>{{ getUsername() }} TO DO LIST</h1>
+            </div>
+            <div class="logout-button" *ngIf="isUserLoggedIn()">
+                <button (click)="logout()">Log out</button>
+            </div>
+        </header>
+
+        <section class="content">
+            <router-outlet></router-outlet>
+        </section>
+    </main>
+</div>

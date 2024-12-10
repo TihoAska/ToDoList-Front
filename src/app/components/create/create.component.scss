@@ -1,0 +1,120 @@
+.login-form{
+    min-height: 200px;
+    width: 500px;
+    background-color: #1F2528;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 30px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    
+    .back-arrow-container{
+        position: absolute;
+        left: 30px;
+        top: 30px;
+        height: 45px;
+        width: 45px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50px;
+        transition: background-color 0.3s ease;
+
+        #arrow-back{
+            color: white;
+            font-size: 26px;
+        }
+    }
+
+    .back-arrow-container:hover{
+        background-color: #31383c;
+        cursor: pointer;
+    }
+
+    .title-and-line{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h2{
+            margin-top: 5px;
+            color: white;
+            font-size: 32px;
+        }
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        color: white;
+        font-size: 20px;
+
+        .user-name-container{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .username-container{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .password-container{
+            display: flex;
+            flex-direction: column;   
+        }
+
+        .error{
+            font-size: 16px;
+            height: 20px;
+            color: lightcoral;
+        }
+
+        input{
+            background-color: transparent;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            height: 30px;
+            width: 300px;
+            color: white;
+            font-size: 20px;
+        }
+
+        input:focus{
+            outline: none;
+        }
+
+        .button-container{
+            padding-top: 10px;
+            
+            button{
+                height: 36px;
+                width: 150px;
+                border: none;
+                border-radius: 20px;
+                background-color: rgb(111, 201, 231);
+            } 
+        
+            button:hover{
+                cursor: pointer;
+                background-color: rgb(155, 221, 243);
+            }
+    
+            button:disabled {
+                cursor: default;
+                background-color: gray;
+            }
+        }
+
+    }
+}

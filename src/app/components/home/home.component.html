@@ -1,0 +1,28 @@
+<section class="login-form">
+    <div class="title-and-line">
+        <h2>To do: </h2>
+        <div class="horizontal-line"></div>
+    </div>
+
+    <section class="to-do-list">
+        <ng-container *ngFor="let task of tasks">
+            <div class="to-do"  *ngIf="tasks.length > 0">
+                <input type="checkbox" (click)="check(task)">
+                <span [ngStyle]="{'text-decoration': isChecked(task) ? 'line-through': 'none'}">{{task.title}}</span>
+            </div>
+        </ng-container>
+        
+
+        <div class="nothing" *ngIf="tasks.length <= 0">
+            <span>Nothing</span>
+        </div>
+
+    </section>
+
+    <div class="buttons">
+        <button id="done-button" [disabled]="!isAnythingChecked()" (click)="markAsDone()">Done</button>
+        <button id="create-button" (click)="navigateToCreate()">Create</button>
+    </div>
+    
+</section>
+
