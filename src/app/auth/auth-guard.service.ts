@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, GuardResult, MaybeAsync, Router, RouterStateSnapshot } from '@angular/router';
 import { UserService } from '../services/user.service';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 @Injectable({
@@ -9,13 +9,29 @@ import { AuthService } from '../services/auth.service';
 })
 export class AuthGuardService implements CanActivate {
 
-  constructor(private router: Router, private authService: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     if (this.authService.isUserLoggedIn()){
       return true;
     } else{
-      return false;
+      let refreshToken = this.authService.getRefreshTokenFromLocalStorage();
+
+      if(!refreshToken){
+        this.authService.logout();
+        return false;
+      }
+
+      return this.authService.refreshAccessToken(refreshToken).pipe(
+        map((isRefreshed) => {
+          if(isRefreshed){
+            return true;
+          } else{
+            this.authService.logout();
+            return false;
+          }
+        })
+      )
     }
   }
 }
