@@ -32,10 +32,10 @@ export class ForgotPasswordComponent {
           email: this.forgotPasswordForm.value.email
         }).subscribe({
           next: (res: any) => {
-            console.log(res);
+            console.log('Not implemented man');
           },
           error: (error: any) => {
-            console.log(error)
+            console.log('Not implemented man');
             this.displayUserNotFoundError();
           }
         });

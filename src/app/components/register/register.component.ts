@@ -43,7 +43,6 @@ export class RegisterComponent {
           }
         },
         error: (error: any) => {
-          console.log(error);
           this.showError = true;
         }
       });

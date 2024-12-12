@@ -29,7 +29,6 @@ export class CreateComponent {
       }).subscribe((res: any) => {
         this.taskService.$tasks.next([...this.taskService.$tasks.value, res.task]);
         this.router.navigate(['home']);
-        console.log(res);
       });
     }
   }
