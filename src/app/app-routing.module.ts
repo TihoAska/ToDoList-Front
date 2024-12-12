@@ -29,7 +29,7 @@ const routes: Routes = [
       {
         path: 'create',
         component: CreateComponent,
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
       },
       {
         path: 'forgot-password',
