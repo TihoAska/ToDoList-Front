@@ -7,13 +7,14 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MainComponent } from './components/main/main.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
-import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
+import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { CreateComponent } from './components/create/create.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatIconModule } from '@angular/material/icon';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { tokenInterceptor } from './auth/token.interceptor';
 
 @NgModule({
   declarations: [
@@ -34,10 +35,13 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
   ],
   providers: [
     provideClientHydration(withEventReplay()),
-    provideHttpClient(withInterceptorsFromDi(), withFetch()),
+    provideHttpClient(withFetch(), withInterceptors([tokenInterceptor])),
     provideAnimationsAsync(),
-    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService
+    { 
+      provide: JWT_OPTIONS, 
+      useValue: JWT_OPTIONS
+    },
+    JwtHelperService,
   ],
   bootstrap: [AppComponent]
 })
