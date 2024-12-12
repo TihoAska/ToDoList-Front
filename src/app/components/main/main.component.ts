@@ -12,8 +12,8 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './main.component.scss'
 })
 export class MainComponent {
-  currentRoute = ''
-  username = ''
+  currentRoute = '';
+  username = '';
 
   constructor(
     private router: Router, 
@@ -34,6 +34,8 @@ export class MainComponent {
               this.taskService.$tasks.next(tasksWithIsChecked);
             }
           });
+        } else{
+          this.username = ''
         }
       }
     });
@@ -52,14 +54,8 @@ export class MainComponent {
     return this.username ? (this.username + "'s ") : '';
   }
 
-  removeUsername(){
-    this.username = ''
-  }
-
   logout(){
-    this.removeUsername();
-    this.authService.removeTokensFromLocalStorage();
-    this.authService.removeUser();
+    this.authService.logout();
     this.router.navigate(['login']);
   }
   
