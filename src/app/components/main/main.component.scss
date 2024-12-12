@@ -3,6 +3,10 @@
     width: 100vw;
 
     background-image: url('../../../assets/office_table.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
     overflow: hidden;
 
     display: flex;
@@ -61,6 +65,17 @@
             align-items: center;
             justify-content: center;
             height: 90%;
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    .container{
+        header{
+            .logout-button{
+                bottom: 50px;
+
+            }
         }
     }
 }
