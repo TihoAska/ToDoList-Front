@@ -55,6 +55,7 @@
                   "maximumError": "8kB"
                 }
               ],
+              "baseHref": "/ToDoList-Front/",
               "outputHashing": "all",
               "optimization": true,
               "sourceMap": false,
