@@ -1,4 +1,4 @@
-import { backendUrl } from './../../environments/environment';
+import { environment } from './../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
@@ -8,27 +8,29 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class TaskService {
 
+  backendUrl = environment.backendUrl;
+
   $tasks: BehaviorSubject<any> = new BehaviorSubject<any>([]);
 
   constructor(private http: HttpClient) { }
 
   getAll(){
-    return this.http.get(backendUrl + 'api/task/get-all/');
+    return this.http.get(this.backendUrl + 'api/task/get-all/');
   }
 
   getUndoneTasksByUserId(userId: number){
-    return this.http.get(backendUrl + 'api/task/get-undone-tasks/' + userId + '/');
+    return this.http.get(this.backendUrl + 'api/task/get-undone-tasks/' + userId + '/');
   }
 
   create(task: any){
-    return this.http.post(backendUrl + 'api/task/create/', task);
+    return this.http.post(this.backendUrl + 'api/task/create/', task);
   }
 
   delete(task: any){
-    return this.http.delete(backendUrl + 'api/task/delete/', task);
+    return this.http.delete(this.backendUrl + 'api/task/delete/', task);
   }
 
   markAsDone(tasksIds: any){
-    return this.http.put(backendUrl + 'api/task/mark-as-done/', tasksIds);
+    return this.http.put(this.backendUrl + 'api/task/mark-as-done/', tasksIds);
   }
 }

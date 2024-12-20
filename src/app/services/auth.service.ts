@@ -3,13 +3,15 @@ import { UserService } from './user.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
-import { backendUrl } from '../../environments/environment';
+import { environment } from '../../environments/environment';
 import { catchError, map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  backendUrl = environment.backendUrl;
+
   constructor(
     private userService: UserService, 
     private jwtHelper: JwtHelperService, 
@@ -128,7 +130,7 @@ export class AuthService {
   }
 
   refreshAccessToken(refreshToken: any){
-    return this.http.post(backendUrl + 'api/token/refresh/', {
+    return this.http.post(this.backendUrl + 'api/token/refresh/', {
       refresh: refreshToken
     }).pipe(
       map((res: any) => {
