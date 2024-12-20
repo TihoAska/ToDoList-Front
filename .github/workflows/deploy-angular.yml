@@ -1,0 +1,37 @@
+name: Build and Deploy Angular to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master  # Trigger on push to the master branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'  # Specify the version of Node.js
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Inject backendUrl
+        run: |
+          # Create a custom prod environment file with the backend URL secret
+          echo "export const environment = { production: true, backendUrl: '${{ secrets.BACKEND_URL }}' };" > src/environments/environment.prod.ts
+
+      - name: Build Angular app
+        run: npm run build --prod  # Build the app in production mode
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # The branch where the built app will be deployed
+          folder: dist/to-do-list  # The build output folder
+          token: ${{ secrets.GITHUB_TOKEN }}  # Uses the GitHub token to push to the repository
