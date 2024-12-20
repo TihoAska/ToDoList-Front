@@ -28,6 +28,15 @@ jobs:
           # Create a custom prod environment file with the backend URL secret
           echo "export const environment = { production: true, backendUrl: '${{ secrets.BACKEND_URL }}' };" > src/environments/environment.prod.ts
 
+      - name: Verify environment.prod.ts file
+        run: |
+          ls -al src/environments
+
+      - name: Clean npm cache
+        run: |
+          rm -rf node_modules
+          npm install
+
       - name: Build Angular app
         run: npm run build --prod  # Build the app in production mode
 
