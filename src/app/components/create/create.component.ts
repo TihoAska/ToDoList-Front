@@ -1,4 +1,3 @@
-import { backendUrl } from './../../../environments/environment';
 import { Component } from '@angular/core';
 import { TaskService } from '../../services/task.service';
 import { Router } from '@angular/router';
