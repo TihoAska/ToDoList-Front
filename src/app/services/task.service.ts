@@ -1,17 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { BACKEND_URL } from './tokens';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
-  backendUrl = environment.backendUrl;
-
   $tasks: BehaviorSubject<any> = new BehaviorSubject<any>([]);
 
   constructor(
+    @Inject(BACKEND_URL) private backendUrl: string,
     private http: HttpClient
   ) {
   }

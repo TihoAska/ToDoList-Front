@@ -1,18 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { UserService } from './user.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, of } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { BACKEND_URL } from './tokens';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  backendUrl = environment.backendUrl;
-
   constructor(
+    @Inject(BACKEND_URL) private backendUrl: string,
     private userService: UserService, 
     private jwtHelper: JwtHelperService, 
     private http: HttpClient,

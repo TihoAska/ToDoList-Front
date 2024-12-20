@@ -2,14 +2,14 @@ import { HttpClient, HttpInterceptorFn } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { catchError, switchMap, throwError } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { BACKEND_URL } from '../services/tokens';
 
 export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
   if(req.url.includes('/api/user/login') || req.url.includes('/api/user/register') || req.url.includes('api/token/refresh')){
     return next(req);
   }
   
-  const backendUrl = environment.backendUrl;
+  const backendUrl = inject(BACKEND_URL);
   const authService = inject(AuthService);
   const http = inject(HttpClient);
 

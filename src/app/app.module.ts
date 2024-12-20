@@ -16,6 +16,7 @@ import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { tokenInterceptor } from './auth/token.interceptor';
 import { environment } from 'src/environments/environment';
+import { BACKEND_URL } from './services/tokens';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { environment } from 'src/environments/environment';
       provide: JWT_OPTIONS, 
       useValue: JWT_OPTIONS
     },
-    { provide: 'BACKEND_URL', useValue: environment.backendUrl },
+    { provide: BACKEND_URL, useValue: environment.backendUrl },
     JwtHelperService,
   ],
   bootstrap: [AppComponent]
