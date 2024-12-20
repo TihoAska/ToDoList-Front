@@ -3,8 +3,8 @@ import { UserService } from './user.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../environments/environment';
 import { catchError, map, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,8 @@ export class AuthService {
     private jwtHelper: JwtHelperService, 
     private http: HttpClient,
     private router: Router
-  ) { }
+  ) {
+  }
 
   isUserLoggedIn(){
     let accessToken = this.getAccessTokenFromLocalStorage();
