@@ -61,7 +61,6 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              
               "baseHref": "/ToDoList-Front/",
               "outputHashing": "all",
               "optimization": true,
