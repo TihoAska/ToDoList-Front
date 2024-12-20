@@ -31,8 +31,7 @@ jobs:
           echo "export const environment = { production: true, backendUrl: '${{ secrets.BACKEND_URL }}' };" > src/environments/environment.prod.ts
 
       - name: Verify environment.prod.ts file
-        run: |
-          ls -al src/environments
+        run: cat src/environments/environment.prod.ts
 
       - name: Install Angular CLI globally
         run: npm install -g @angular/cli 
