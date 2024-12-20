@@ -38,7 +38,7 @@ jobs:
           npm install
 
       - name: Build Angular app
-        run: npm run build --prod  # Build the app in production mode
+        run: ng build --configuration production  # Build the app in production mode
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
