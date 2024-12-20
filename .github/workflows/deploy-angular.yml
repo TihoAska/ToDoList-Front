@@ -23,6 +23,8 @@ jobs:
 
       - name: Inject backendUrl
         run: |
+          # Ensure the directory exists
+          mkdir -p src/environments
           # Create a custom prod environment file with the backend URL secret
           echo "export const environment = { production: true, backendUrl: '${{ secrets.BACKEND_URL }}' };" > src/environments/environment.prod.ts
 
