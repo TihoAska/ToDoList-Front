@@ -9,6 +9,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write  # Allow the bot to write to the repository
+      pages: write     # Allow the bot to push to GitHub Pages
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -44,4 +48,4 @@ jobs:
         with:
           branch: gh-pages  # The branch where the built app will be deployed
           folder: dist/to-do-list  # The build output folder
-          token: ${{ secrets.GITHUB_TOKEN }}  # Uses the GitHub token to push to the repository
+          token: ${{ secrets.GH_TOKEN }}  # Uses the GitHub token to push to the repository
