@@ -18,8 +18,10 @@ jobs:
         with:
           node-version: '20'  # Specify the version of Node.js
 
-      - name: Install dependencies
-        run: npm install
+      - name: Clean npm cache and install dependencies
+        run: |
+          rm -rf node_modules
+          npm install
 
       - name: Inject backendUrl
         run: |
@@ -32,13 +34,11 @@ jobs:
         run: |
           ls -al src/environments
 
-      - name: Clean npm cache
-        run: |
-          rm -rf node_modules
-          npm install
+      - name: Install Angular CLI globally
+        run: npm install -g @angular/cli 
 
       - name: Build Angular app
-        run: ng build --configuration production  # Build the app in production mode
+        run: ng build --configuration=production  # Build the app in production mode
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
