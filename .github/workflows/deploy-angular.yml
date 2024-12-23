@@ -44,8 +44,4 @@ jobs:
         run: ng build --configuration=production  # Build the app in production mode
 
       - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages  # The branch where the built app will be deployed
-          folder: dist/to-do-list  # The build output folder
-          token: ${{ secrets.GH_TOKEN }}  # Uses the GitHub token to push to the repository
+        run: ng deploy
