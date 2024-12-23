@@ -31,6 +31,29 @@
 
     .to-do-list{
         min-height: 50px;
+        max-height: 250px;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: 8px;
+            height: 8px; 
+        }
+
+        &::-webkit-scrollbar-track {
+            background: rgba(50, 50, 50, 0.8); 
+            border-radius: 10px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: rgb(111, 201, 231);
+            border-radius: 10px;
+            border: 2px solid transparent; 
+            background-clip: padding-box;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: rgb(91, 181, 211); 
+        }
 
         .to-do{
             display: flex;
