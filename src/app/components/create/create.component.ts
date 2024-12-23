@@ -41,13 +41,17 @@ export class CreateComponent {
   }
 
   isTaskNameOver20Characters(){
-    if(this.createTaskForm.value.taskName){
-      return this.createTaskForm.value.taskName.length >= 20;
+    let taskName = this.createTaskForm.value.taskName?.trim();
+
+    if(taskName){
+      return taskName.length > 20;
     }
+
     return false;
   }
 
   isInputEmpty(){
-    return this.createTaskForm.value.taskName?.length == 0
+    let taskName = this.createTaskForm.value.taskName?.trim();
+    return !taskName || taskName.length == 0
   }
 }
